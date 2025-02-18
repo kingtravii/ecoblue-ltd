@@ -1,0 +1,150 @@
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background: #006994; /* Sea Blue */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  /* Header Navigation */
+  .top-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #004466;
+    color: white;
+    padding: 15px 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  /* Navigation Links */
+  .nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .nav-left a, .nav-right a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .nav-left a:hover, .nav-right a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Dropdown Menu */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    color: #004466;
+    list-style: none;
+    padding: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+  }
+  
+  .dropdown-menu li {
+    padding: 8px 20px;
+  }
+  
+  .dropdown-menu li a {
+    text-decoration: none;
+    color: #004466;
+    display: block;
+  }
+  
+  .dropdown-menu li a:hover {
+    background-color: #00bfff;
+    color: white;
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+  /* Centered Animated Title */
+  .center-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+  }
+  
+  /* 3D Title Effect */
+  .title-link {
+    font-size: 6rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    position: relative;
+    
+    /* 3D Effect */
+    text-shadow: 
+      3px 3px 0px #004466, 
+      6px 6px 0px #002233, 
+      9px 9px 15px rgba(0, 0, 0, 0.5);
+  
+    /* Animations */
+    animation: glow 2s infinite alternate, moveUpDown 3s ease-in-out infinite;
+  }
+  
+  /* Dropdown under the title */
+  .title-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  
+  /* Glowing Effect */
+  @keyframes glow {
+    0% {
+      text-shadow: 
+        3px 3px 0px #004466, 
+        6px 6px 0px #002233, 
+        9px 9px 15px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+      text-shadow: 
+        3px 3px 5px #0066cc, 
+        6px 6px 10px #004499, 
+        9px 9px 20px rgba(255, 255, 255, 1);
+    }
+  }
+  
+  /* Smooth Up-Down Animation */
+  @keyframes moveUpDown {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
