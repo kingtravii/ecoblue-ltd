@@ -7,14 +7,14 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: #006994; /* Sea Blue */
+    background: #006994;
     color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    padding-top: 60px; /* Adjusts content to avoid overlap with header */
+    overflow: hidden;
 }
 
 /* Header Navigation */
@@ -24,12 +24,11 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: #004466;
-    color: white;
     padding: 15px 20px;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 1000;
 }
 
 /* Navigation Links */
@@ -39,34 +38,42 @@ body {
     gap: 20px;
 }
 
-.nav-left a, .nav-right a {
+.nav-link {
     text-decoration: none;
     color: white;
     font-weight: bold;
+    padding: 10px;
+    display: inline-block;
 }
 
-.nav-left a:hover, .nav-right a:hover {
-    text-decoration: underline;
-}
-
-/* Dropdown Menu */
+/* Dropdown Styling */
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
+/* Ensure dropdown is initially hidden */
 .dropdown-menu {
     display: none;
     position: absolute;
+    top: 100%;
+    left: 0;
     background-color: white;
     color: #004466;
     list-style: none;
     padding: 10px 0;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    min-width: 150px;
+    min-width: 180px;
+    z-index: 100;
 }
 
+/* Ensure dropdown appears on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Dropdown Items */
 .dropdown-menu li {
     padding: 8px 20px;
 }
@@ -82,21 +89,17 @@ body {
     color: white;
 }
 
-/* Show dropdown when hovering over parent */
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-/* Centered Title */
+/* Centered Ecoblue Ltd Title */
 .center-title {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
     width: 100%;
+    position: relative;
 }
 
-/* 3D Title Effect */
+/* Ecoblue Ltd Title Link */
 .title-link {
     font-size: 6rem;
     font-weight: bold;
@@ -105,11 +108,14 @@ body {
     text-align: center;
     text-decoration: none;
     position: relative;
-    text-shadow: 3px 3px 0px #004466, 6px 6px 0px #002233, 9px 9px 15px rgba(0, 0, 0, 0.5);
+    text-shadow: 
+      3px 3px 0px #004466, 
+      6px 6px 0px #002233, 
+      9px 9px 15px rgba(0, 0, 0, 0.5);
     animation: glow 2s infinite alternate, moveUpDown 3s ease-in-out infinite;
 }
 
-/* Dropdown under the title */
+/* Dropdown under Ecoblue Ltd */
 .title-menu {
     position: absolute;
     top: 100%;
@@ -118,39 +124,46 @@ body {
     text-align: center;
 }
 
-/* Glowing Effect */
-@keyframes glow {
-    0% {
-        text-shadow: 3px 3px 0px #004466, 6px 6px 0px #002233, 9px 9px 15px rgba(255, 255, 255, 0.5);
-    }
-    100% {
-        text-shadow: 3px 3px 5px #0066cc, 6px 6px 10px #004499, 9px 9px 20px rgba(255, 255, 255, 1);
-    }
+/* Marquee Effect for "Experts in Ecoblue" */
+.marquee {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
-/* Smooth Up-Down Animation */
-@keyframes moveUpDown {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+.marquee p {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    animation: scrollText 10s linear infinite;
+}
+/* Marquee Effect - Moving Text */
+.marquee {
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
-/* Optional: Add responsive design */
-@media (max-width: 768px) {
-    .top-bar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+.marquee p {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    position: relative;
+    animation: marquee 8s linear infinite;
+}
 
-    .nav-left, .nav-right {
-        flex-direction: column;
-        gap: 10px;
+/* Animation for Moving Text from Extreme Right */
+@keyframes marquee {
+    from {
+        transform: translateX(100vw); /* Start off-screen right */
     }
-
-    .title-link {
-        font-size: 4rem;
+    to {
+        transform: translateX(-100%); /* Move fully off-screen left */
     }
 }
